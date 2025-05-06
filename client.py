@@ -1,12 +1,15 @@
 import requests
 
+base_url = "http://chrisbrooks.pythonanywhere.com/"
 
 def get_programmer_count():
     """
     Return the number of programmers return from the plural programmers API
     :return: An integer indicating the number of programmers in the plural list.
     """
-    return 0
+    r = requests.get(base_url + "api/programmers")
+    data = r.json()
+    return len(data.get("programmers", []))
 
 
 def get_programmer_by_id(pid):
